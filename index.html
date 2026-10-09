@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel para consultar y gestionar usuarios.">
+  <title>Directorio — Gestión de usuarios</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Directorio, inicio">
+        <span class="brand-mark">D<span>.</span></span>
+        <span>directorio<span class="brand-sub">/ panel de usuarios</span></span>
+      </a>
+      <div class="top-meta"><span class="live-dot"></span> API en línea <span class="meta-divider">/</span> JS · CRUD</div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="intro-copy">
+          <p class="eyebrow">ADMINISTRACIÓN <span>—</span> 01</p>
+          <h1>Personas,<br><em>en orden.</em></h1>
+          <p class="intro-text">Consulta el directorio, encuentra un perfil y gestiona sus datos desde un solo lugar.</p>
+        </div>
+        <div class="intro-stamp" aria-hidden="true">
+          <span class="stamp-number">01</span>
+          <span class="stamp-label">DIRECTORIO<br>GENERAL</span>
+          <span class="stamp-line"></span>
+          <span class="stamp-small">ACTUALIZACIÓN<br>EN TIEMPO REAL*</span>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Resumen del directorio">
+        <div class="metric metric-main"><span class="metric-label">USUARIOS EN LISTA</span><strong id="totalUsuarios">—</strong><span class="metric-note">Registros cargados</span></div>
+        <div class="metric"><span class="metric-label">CIUDADES</span><strong id="totalCiudades">—</strong><span class="metric-note">Ubicaciones distintas</span></div>
+        <div class="metric"><span class="metric-label">FUENTE</span><strong class="source-word">JSON<span> / </span>API</strong><span class="metric-note">jsonplaceholder.typicode.com</span></div>
+      </section>
+
+      <section class="workspace">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / DIRECTORIO</p><h2>Lista de usuarios</h2></div>
+          <label class="search-box" for="buscarUsuario"><span class="search-icon" aria-hidden="true">⌕</span><input id="buscarUsuario" type="search" placeholder="Buscar por nombre..." autocomplete="off"><kbd>⌘ K</kbd></label>
+        </div>
+        <p id="mensajeEstado" class="status" role="status" aria-live="polite">Cargando usuarios...</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="id-col">ID</th><th>USUARIO</th><th>CORREO</th><th>CIUDAD</th><th class="actions-col">ACCIONES</th></tr></thead>
+            <tbody id="tablaUsuarios"></tbody>
+          </table>
+          <div id="estadoVacio" class="empty-state" hidden>
+            <span class="empty-symbol">∅</span>
+            <strong>No hay coincidencias</strong>
+            <span>Prueba con otro nombre o agrega un usuario.</span>
+          </div>
+        </div>
+        <div class="table-footer"><span><span class="footer-dot"></span> LISTADO DINÁMICO</span><span id="contadorVista">Preparando registros...</span></div>
+      </section>
+
+      <section class="form-section" id="formularioSeccion">
+        <div class="form-intro">
+          <p class="eyebrow">02 / EDICIÓN DE DATOS</p>
+          <h2 id="tituloFormulario">Añadir<br><em>un usuario.</em></h2>
+          <p>Completa los campos para crear un nuevo registro. El ID debe ser único dentro del directorio.</p>
+          <div class="form-note"><span>i</span> Los cambios se mantienen durante esta sesión y no modifican la API original.</div>
+        </div>
+        <form id="formUsuario" novalidate>
+          <div class="form-grid">
+            <div class="field field-id">
+              <label for="idUsuario">ID <span>*</span></label>
+              <input id="idUsuario" name="id" type="number" min="1" step="1" placeholder="Ej. 11" required>
+              <small>Identificador numérico único</small>
+            </div>
+            <div class="field">
+              <label for="nombreUsuario">Nombre completo <span>*</span></label>
+              <input id="nombreUsuario" name="nombre" type="text" placeholder="Ej. Ana Torres" required>
+            </div>
+            <div class="field">
+              <label for="correoUsuario">Correo electrónico <span>*</span></label>
+              <input id="correoUsuario" name="correo" type="email" placeholder="ana@correo.com" required>
+            </div>
+            <div class="field">
+              <label for="ciudadUsuario">Ciudad <span>*</span></label>
+              <input id="ciudadUsuario" name="ciudad" type="text" placeholder="Ej. Barranquilla" required>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="button button-quiet" id="cancelarEdicion" type="button" hidden>Cancelar</button>
+            <button class="button button-primary" id="botonGuardar" type="submit">Agregar usuario <span aria-hidden="true">↗</span></button>
+          </div>
+          <p class="required-note">* Campos obligatorios</p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>DIRECTORIO <b>© 2026</b></span><span>Hecho con HTML, CSS y JavaScript</span><span class="footer-right">DATOS DE DEMOSTRACIÓN <span>↗</span></span></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
